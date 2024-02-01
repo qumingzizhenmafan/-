@@ -3,6 +3,7 @@
 #include<initializer_list>
 #include<map>
 #include<algorithm>
+#include<sstream>
 #include "tou_text.h"
 
 
@@ -132,8 +133,78 @@ long long minimumRemoval(vector<int>& beans) {
     return res;
 }
 
+int minimumTime(vector<int>& nums1, vector<int>& nums2, int x) {//三分之一
+    int sum1 = 0, sum2 = 0;
+    for (int i = 0; i < nums1.size(); i++) { sum1 += nums1[i]; sum2 += nums2[i]; }
+    int j = 1;
+    vector<int> flags(nums1.size(), 0);
+    while (j <= nums1.size()) {
+        int bestno = -1;
+        int bestcount = INT_MAX;
+        for (int i = 0; i < nums1.size(); i++) {
+            if (flags[i] == 1) continue;
+            int judge = nums1[i] + nums2[i];
+            if (sum1 + sum2 - judge <= x) { return j; }
+            if (judge < bestcount) {
+                bestno = i;
+                bestcount = judge;
+            }
+            else if (judge == bestcount) {
+                bestno = nums2[i] < nums2[bestno] ? i : bestno;
+                bestcount = nums2[i] < nums2[bestno] ? judge : bestcount;
+            }
+        }
+        if (bestno != -1) sum1 = sum1 + sum2 - nums1[bestno] - nums2[bestno];
+        else return -1;
+        for (int i = 0; i < nums1.size(); i++) { nums1[i] += nums2[i]; }
+        nums1[bestno] = 0;
+        flags[bestno] = 1;
+        j++;
+    }
+    if(j > nums1.size()){
+        vector<int> nums2_copy(nums2);
+        sort(nums2_copy.begin(), nums2_copy.end());
+        int first_judge = 0;
+        for (int i = 1; i < nums1.size(); i++) first_judge += ((nums1.size() - i) * nums2_copy[i - 1]);
+        if (first_judge < x) return nums1.size();
+        else return -1;
+    }else return j;
+}
+
 int main() {
-    //--------------1.18
+    //--------------1.21
+    string num = "21454645";
+    std::ostringstream badnum;
+    string num2 = "425242";
+    badnum << num2;
+    cout << badnum.str();
+
+
+    /*--------------1.20
+    int n = 10;
+    vector<int> vec;
+    auto it = back_inserter(vec);
+    fill_n(it, 10, 10);
+    for_each(vec.begin(), vec.end(), [n](const int& i) {
+        if (i > n) cout << i << " ";
+        });
+    cout << vec[0] << endl;
+    int x = 5;
+
+    auto lambda = [&x](int y) {
+        return x += y;
+        };
+
+    cout << lambda(3);  // 调用 Lambda 表达式，传递参数 3
+
+    /*--------------1.19
+    vector<int> nums1{ 7,9,8,5,8,3 };
+    vector<int> nums2{ 0,1,4,2,3,1 };
+    cout << minimumTime(nums1, nums2, 37);
+
+    cout << unitbuf;    //所有输出操作都会立即刷新缓冲区
+    cout << nounitbuf;   //回到正常的缓冲方式
+    /*--------------1.18
     vector<int> beans{ 4,1,6,5 };
     cout << minimumRemoval(beans);
     /*--------------1.17

@@ -34,3 +34,5 @@ int Salas_data::i = 10;
 
 
 extern const int size = 100;
+
+
