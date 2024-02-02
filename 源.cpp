@@ -100,7 +100,7 @@ string repeatLimitedString(string s, int repeatLimit) {
             st = stn;
             stn = stn + 1;
         }
-        else if (sp[*stn] <=    0) {
+        else if (sp[*stn] <= 0) {
             stn = stn + 1;
         }
     }
