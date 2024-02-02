@@ -47,10 +47,10 @@ string repeatLimitedString(string s, int repeatLimit) {
     if (s.empty()) return "";
     map<char, int> sp;
     auto st = s.begin() + 1;
-    string sd;  //ÓÃÀ´¼ÇÂ¼×Ö·ûµÄÖÖÀà
+    string sd;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {sd.push_back(s[0]);
-    sp[s[0]] = 1; }//Ô¤´¦Àí
-    while (st != s.end()) {  //Ô¤´¦Àí×Ö·û´®£¬Í³¼ÆÖÖÀàºÍÊýÁ¿
+    sp[s[0]] = 1; }//Ô¤ï¿½ï¿½ï¿½ï¿½
+    while (st != s.end()) {  //Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (sp.find(*st) != sp.end()) {
             ++sp[*st];
         }
@@ -76,7 +76,7 @@ string repeatLimitedString(string s, int repeatLimit) {
     }
     //cout << sd << endl;
 
-    //----ÓÃÒÔÊä³öÄ¿±ê×Ö·û´®
+    //----ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
     st = sd.begin();
     auto stn = st + 1;
     string target;
@@ -100,14 +100,14 @@ string repeatLimitedString(string s, int repeatLimit) {
             st = stn;
             stn = stn + 1;
         }
-        else if (sp[*stn] <= 0) {
+        else if (sp[*stn] <=    0) {
             stn = stn + 1;
         }
     }
     return target;
 }
 
-int countSeniors(const vector<string>& details) {//Í³¼Æ×Ö·û´®ÉÏµÚ12ºÍ13Î»×é³ÉµÄÊýµÄÖµÊÇ·ñ´óÓÚ60µÄ¸öÊý
+int countSeniors(const vector<string>& details) {//Í³ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ïµï¿½12ï¿½ï¿½13Î»ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ç·ï¿½ï¿½ï¿½ï¿½60ï¿½Ä¸ï¿½ï¿½ï¿½
     int count = 0;
     for (string str : details) {
         int i = (int)(str[11] - '0') * 10 + (int)(str[12] - '0');
@@ -133,7 +133,7 @@ long long minimumRemoval(vector<int>& beans) {
     return res;
 }
 
-int minimumTime(vector<int>& nums1, vector<int>& nums2, int x) {//Èý·ÖÖ®Ò»
+int minimumTime(vector<int>& nums1, vector<int>& nums2, int x) {//ï¿½ï¿½ï¿½ï¿½Ö®Ò»
     int sum1 = 0, sum2 = 0;
     for (int i = 0; i < nums1.size(); i++) { sum1 += nums1[i]; sum2 += nums2[i]; }
     int j = 1;
@@ -195,15 +195,15 @@ int main() {
         return x += y;
         };
 
-    cout << lambda(3);  // µ÷ÓÃ Lambda ±í´ïÊ½£¬´«µÝ²ÎÊý 3
+    cout << lambda(3);  // ï¿½ï¿½ï¿½ï¿½ Lambda ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ 3
 
     /*--------------1.19
     vector<int> nums1{ 7,9,8,5,8,3 };
     vector<int> nums2{ 0,1,4,2,3,1 };
     cout << minimumTime(nums1, nums2, 37);
 
-    cout << unitbuf;    //ËùÓÐÊä³ö²Ù×÷¶¼»áÁ¢¼´Ë¢ÐÂ»º³åÇø
-    cout << nounitbuf;   //»Øµ½Õý³£µÄ»º³å·½Ê½
+    cout << unitbuf;    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½
+    cout << nounitbuf;   //ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½å·½Ê½
     /*--------------1.18
     vector<int> beans{ 4,1,6,5 };
     cout << minimumRemoval(beans);
@@ -215,7 +215,7 @@ int main() {
     int arr[7] = { 1, 2, 3, 3, 4, 4, 5 };
     ListNode head = ListNode(arr[6]);
     int i;
-    //cout << i << endl; //»á±¨´í£¬ÏÔÊ¾Ê¹ÓÃÎ´³õÊ¼»¯µÄ¾Ö²¿±äÁ¿
+    //cout << i << endl; //ï¿½á±¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ê¹ï¿½ï¿½Î´ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ä¾Ö²ï¿½ï¿½ï¿½ï¿½ï¿½
     i = 5;
     ListNode temp[7];
     temp[6] = head;
@@ -263,11 +263,11 @@ int main() {
 
     std::vector<int> vec = { 1, 2, 3, 4, 5 };
 
-    // ÔÚµÚÈý¸öÎ»ÖÃ²åÈëÔªËØ6
+    // ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã²ï¿½ï¿½ï¿½Ôªï¿½ï¿½6
     auto it = vec.begin() + 2;
     vec.insert(it, 6);
 
-    // Êä³ö²åÈëºóµÄÔªËØ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
     for (auto num : vec) {
         std::cout << num << " ";
     }
